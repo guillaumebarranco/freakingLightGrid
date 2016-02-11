@@ -1,11 +1,12 @@
 $grid_size: 12;
-$guttler: 2%; // Goutière
+$gutter: 2%; // Goutière
+$bodyWidth: 960px;
 
 @mixin createGrid($gridName) {
 	@for $i from 1 through $grid_size {
 		.col-#{$gridName}-#{$i} {
-			width: (100% / $grid_size) * $i - $guttler;
-			margin-left: $guttler;
+			width: (100% / $grid_size) * $i - $gutter;
+			margin-left: $gutter;
 		}
 	}
 }
@@ -13,7 +14,7 @@ $guttler: 2%; // Goutière
 body {
 	margin: 0 auto;
 	width: 90%;
-	max-width: 960px;
+	max-width: $bodyWidth;
 }
 
 h1 {text-align: center;}
@@ -36,7 +37,6 @@ $map: (
 );
 
 @each $key, $value in $map {
-
 	@media screen and (max-width: $value) {
 		@include createGrid($key);
 	}
